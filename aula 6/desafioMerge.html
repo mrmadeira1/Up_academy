@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1 id="names">Merge arrays</h1>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script>
+    let data1 = [{
+      name: "Ze Carlos",
+      id: 5
+    }, {
+      name: "Ze Manel",
+      id: 6
+    }, {
+      name: "Sam",
+      id: 4
+    }]
+    let data2 = [{
+      name: "Gata",
+      id: 3
+    }, {
+      name: "Sam",
+      id: 4
+    }]
+    let data3 = [{
+      name: "Ze Carlos",
+      id: 5
+    }, {
+      name: "Hulk",
+      id: 1
+    }, {
+      name: "Migas",
+      id: 2
+    }]
+  </script>
+  <script>
+    $(document).ready(function () {
+
+    });
+
+    /*******************************************************************************
+     *
+     *       Desafio: Apresentar no elemento <p> os nomes ordenados e sem repetição
+     *
+     ******************************************************************************/
+
+    //  Add Logic
+
+    let all = data1.concat(data2, data3); 
+
+
+    all = all.map(item => item.name).sort();
+
+    let allsort = []
+    for (const item of all) {
+      if(!allsort.some(element => element === item)){
+        allsort.push(item)
+      }
+    }
+
+    console.log(allsort);
+
+    $("#names").html(allsort.join(","))
+
+
+
+
+
+  </script>
+</body>
+
+</html>

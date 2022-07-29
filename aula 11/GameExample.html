@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Bootstrap Example</title>
+  </head>
+  <body class="container mt-5">
+    <!-- Example Code -->
+    <h1>Nested Objects</h1>
+    <!-- End Example Code -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      class Produto {
+        Hamburguer = '';
+        Bebida = '';
+        Acompanhamento = '';
+
+        constructor(Hamburguer, Bebida, Acompanhamento) {
+          this.Hamburguer = Hamburguer;
+          this.Bebida = Bebida;
+          this.Acompanhamento = Acompanhamento;
+        }
+      }
+
+      class Pedido {
+        name = '';
+        id = 0;
+        Menu = [];
+
+        addProduto(produto) {
+          this.Menu.push(produto)
+        }
+      }
+
+      const Pedidos = []
+
+      let initPed = new Pedido();
+      let produto = new Produto('Joao', 10);
+      initPed.addProduto(produto)
+      produto = new Produto('Joao', 11);
+      initPed.addProduto(produto)
+      produto = new Produto('Joao', 18);
+      initPed.addProduto(produto)
+
+      initPed.name = "XPTO"
+      Pedidos.push(initPed);
+      
+
+
+      // game = new Game();
+      // player = new Player('Joao', 20);
+      // game.addPlayer(player)
+      // player = new Player('Joao', 21);
+      // game.addPlayer(player)
+      // player = new Player('Joao', 28);
+      // game.addPlayer(player)
+
+      // game.name = "XPTO 2"
+      // games.push(game);
+
+
+      // game = new Game();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <table id="users-table" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <table id="notes-table" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+      const users = [
+        {
+          id:1,
+          firstName: 'Joao',
+          lastName: 'Cortes',
+          username: '@jsc'
+        },
+        {
+          id:2,
+          firstName: 'Ze',
+          lastName: 'Cortes',
+          username: '@zc'
+        }
+      ]
+      const notes = [
+        {
+          id:1,
+          author: 'Joao',
+          msg: 'Cortes',
+        },
+        {
+          id:2,
+          author: 'Joao',
+          msg: 'Buu',
+        }
+      ]
+      initTable(users, '#users-table');
+      initTable(notes, '#notes-table')
+    });
+
+    function initTable(data, selector) {
+      fillHeader(data[0], selector)
+
+      fillBody(data, selector)
+    }
+
+    function fillHeader(data, selector) {
+      $(`${selector} #table-head`).html('');
+      let rows = ''
+      for (const key in data) {
+        rows += `<th scope="col">${key}</th>`
+      }
+      const tableRow = `
+      <tr>
+       ${rows}
+      </tr>
+      `
+      $(`${selector} #table-head`).html(tableRow);
+    }
+
+    function fillBody(data, selector) {
+      data.forEach(item => addRowToTable(item));
+    }
+
+    function addRowToTable(data, selector) {
+      const nextId = parseInt(getLastId(selector)) + 1;
+      $(`${selector} #table-body`).append(
+        `
+        <tr>
+          <th scope="row">${nextId}</th>
+          <td colspan="2">${data.firstName} ${data.lastName}</td>
+          <td>${data.username}</td>
+        </tr>
+        `
+      )
+    }
+
+    function getLastId(selector) {
+      return $(`${selector} #table-body th:last`).text()
+    }
+
+    function clearTable(selector) {
+      $(`${selector} #table-body`).html('')
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1 class="byClass">Hello, Class!</h1>
+  <h1 id="byId">Hello, Id!</h1>
+
+  <div id="demo">Init Text</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      let elem = $('#byId')  //  '.byClass'
+
+      $('#demo').html('Change text')
+      $('#demo').append('<h2>Append Element</h2>')
+      $('#demo').after('<h2>After Element</h2>')
+      $('#demo').prepend('<h2>Prepend Element</h2>')
+      $('#demo').before('<h2>Before Element</h2>')
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Merge arrays</h1>
+  <p id="result"></p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script>
+    let data1 = [{
+      name: "Ze Carlos",
+      id: 5
+    }, {
+      name: "Ze Manel",
+      id: 6
+    }, {
+      name: "Sam",
+      id: 4
+    }]
+    let data2 = [{
+      name: "Gata",
+      id: 3
+    }, {
+      name: "Sam",
+      id: 4
+    }]
+    let data3 = [{
+      name: "Ze Carlos",
+      id: 5
+    }, {
+      name: "Hulk",
+      id: 1
+    }, {
+      name: "Migas",
+      id: 2
+    }]
+  </script>
+  <script>
+    $(document).ready(function() {
+      resolveSet();
+      // resolveFilterDup()
+    });
+
+    /*******************************************************************************
+     *
+     *       Desafio: Apresentar no elemento <p> os nomes ordenados e sem repetição
+     *
+     ******************************************************************************/
+
+    //  Add Logic
+    function resolveSet() {
+      let allData = [...data1, ...data2, ...data3];
+      let mapArray = allData.map(item => item.name);
+      console.log(mapArray)
+      let mySet = new Set(mapArray);
+      let backToArray = [...mySet];
+      let sortArray = backToArray.sort();
+
+      // let sortArray = [...new Set([...data1, ...data2, ...data3].map(item => item.name))].sort();
+
+      $('#result').html(sortArray.toString())
+    }
+
+    function resolveFilterDup() {
+      let result = [];
+      let allData = data1.concat(data2).concat(data3);
+      for (let dataIndex = 0; dataIndex < allData.length; dataIndex++) {
+        result.push(allData[dataIndex].name);
+      }
+      result = result.filter((name, index, self) => {
+        return self.indexOf(name) === index;
+      });
+      result = result.sort();
+      $("#result").html(result.toString());
+    }
+
+    function resolveNextDup() {
+      let result = data1.concat(data2, data3);
+      result = allData.map((element) => element = element.name).sort();
+      for (let dataIndex = 0; dataIndex < allData.length - 1; dataIndex++) {
+        if (result[index] === result[index + 1]) {
+          result.splice(index + 1, 1)
+        }
+      }
+      $("#result").html(result.toString());
+    }
+
+    function resolveIndexOf() {
+      let result = [];
+      let allData = [data1, data2, data3]
+      for (let alldataIndex = 0; alldataIndex < allData.length; alldataIndex++) {
+        const data = allData[alldataIndex];
+        for (let dataIndex = 0; dataIndex < data.length; dataIndex++) {
+          const name = data[dataIndex].name;
+          if (result.indexOf(name) == -1) {
+            result.push(name);
+          }
+        }
+      }
+      result = result.sort();
+      $("#result").html(result.toString());
+    }
+
+    function resolveFindIndex() {
+      let result = [];
+      let allData = data1.concat(data2).concat(data3);
+      for (let dataIndex = 0; dataIndex < allData.length; dataIndex++) {
+        result.push(allData[dataIndex]);
+      }
+      result = result.filter((user, index, self) => {
+        return self.findIndex(element => element.name === user.name) === index;
+      });
+      result = result.sort((leftSide, rigthSide) => {
+        if (leftSide.name < rigthSide.name) return -1;
+        if (leftSide.name > rigthSide.name) return 1;
+        return 0;
+      });
+      result = result.map(el => el.name);
+      $("#result").html(result.toString());
+    }
+
+
+
+  </script>
+</body>
+
+</html>

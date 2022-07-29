@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Tabs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+  body {
+    margin-left: 5px;
+    
+  
+  }
+</style>
+
+<body>
+  <!-- Tabs List -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid" role="tablist">
+      <a class="navbar-brand" href="#">Desafio McDonalds</a>
+      <img src="https://th.bing.com/th/id/OIP.72E59kNKgzAR4nJ5x0ZDHQHaEK?w=295&h=180&c=7&r=0&o=5&pid=1.7" style="height:7% ; width:7% ;"></img>
+      
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-flex justify-content-end" id="navbarNav">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="criarpedido-tab" data-bs-toggle="tab" data-bs-target="#criarpedido"
+              type="button" role="tab" aria-controls="criarpedido" aria-selected="true">Criar pedido</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="removerpedido-tab" data-bs-toggle="tab" data-bs-target="#removerpedido"
+              type="button" role="tab" aria-controls="removerpedido" aria-selected="false">Remover pedido</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pedidos-tab" data-bs-toggle="tab" data-bs-target="#Verpedidos" type="button"
+              role="tab" aria-controls="pedidos" aria-selected="false">Pedidos</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="log-out" data-bs-toggle="tab" data-bs-target="#Verpedidos" type="button"
+              role="tab" aria-controls="pedidos" aria-selected="false">Log-out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Tabs View -->
+  <div class="tab-content" id="myTabContent">
+    <!-- View criarpedido -->
+    <div class="tab-pane fade show active" id="criarpedido" role="tabpanel" aria-labelledby="criarpedido-tab"
+      tabindex="0">
+
+      <form>
+        <!-- name -->
+        <div class="mb-3" style="width:fit-content;">
+          <label for="inputName" class="form-label">Name</label>
+          <input type="text" class="form-control" id="inputName" size="50">
+        </div>
+        <!-- lista produtos -->
+        <div class="mb-3 row">
+          <div class="col-4">
+            <select id="Hamburguer" value="" class="form-select" aria-label="Default select example">
+              <option selected value="N/A">Burguer</option>
+              <option value="BigTasty">BigTasty</option>
+              <option value="Big Mac">Big Mac</option>
+              <option value="Mcroyale">Mcroyale</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <select id="Bebida" class="form-select" aria-label="Default select example">
+              <option selected value="N/A">Bebida</option>
+              <option value="Fanta">Fanta</option>
+              <option value="Sumol">Sumol</option>
+              <option value="7up">7up</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <select id="extra" class="form-select" aria-label="Default select example">
+              <option selected value="N/A">Extra</option>
+              <option value="nuggets">nuggets</option>
+              <option value="cheese fingers">cheese fingers</option>
+              <option value="baby carrots">baby carrots</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <!-- ads -->
+      <div class="row">
+        <div class="col-1">
+          <button id="pedir" type="button" class="btn btn-primary" style="background-color:blue">Adicionar</button>
+        </div>
+      </div>
+
+
+      <!-- tabela pedidos no criar pedidos -->
+      <table id="pedidos" class="table">
+        <thead id="table-head">
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+
+      </table>
+      <!-- botao submeter pedido -->
+      <div class="col-1">
+        <button id="submeter" type="button" class="btn btn-primary" style="background-color:green">Submeter</button>
+      </div>
+    </div>
+
+    <!-- View removerpedido -->
+    <div class="tab-pane fade" id="removerpedido" role="tabpanel" aria-labelledby="removerpedido-tab">
+      <h2>Serviço de Cozinha</h2>
+      <h3 id="idCliente" for="inputName" class="form-label"></h3>
+      <break></break>
+      <h4 id="nomeCliente" for="inputName" class="form-label"></h4>
+      <break></break>
+      <table id="servicocozinha" class="table">
+        <thead id="table-head">
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
+      <button id="rAntigo" type="button" class="btn btn-primary" style="background-color:red">Remover +
+        Antigo</button>
+    </div>
+
+    <!-- View pedidos -->
+    <div class="tab-pane fade" id="Verpedidos" role="tabpanel" aria-labelledby="pedidos-tab">
+      <div class="row">
+        <div class="col-4">
+          <button id="filtrarS" type="button" class="btn btn-primary" style="background-color:green">S/extra</button>
+        </div>
+        <div class="col-4">
+          <button id="todos" type="button" class="btn btn-primary" style="background-color:blue">Todos</button>
+        </div>
+        <div class="col-4">
+          <button id="filtrarC" type="button" class="btn btn-primary" style="background-color:purple">C/extra</button>
+        </div>
+      </div>
+      <table id="pedidosFeitos" class="table">
+        <thead id="table-head">
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../templates/tableLib.js"></script>
+  <script src="../aula 12/poligono.js"></script>
+  <script>
+
+    class Produto {
+      Hamburguer = '';
+      Bebida = '';
+      Extra = '';
+
+      constructor(Hamburguer, Bebida, Extra) {
+        this.Hamburguer = Hamburguer;
+        this.Bebida = Bebida;
+        this.Extra = Extra;
+
+      }
+
+    }
+
+    class Pedido {
+      name = '';
+      id = 0;
+      menu = [];
+
+      constructor(name, id) {
+        this.name = name
+        this.id = id
+      }
+
+      addProduto(produto) {
+        this.menu.push(produto)
+
+      };
+
+      mToString() {
+        let menuToString = []
+
+        if (this.menu.length > 0) {
+          this.menu.forEach(item => {
+            for (const key in item) {
+              if (Object.hasOwnProperty.call(item, key)) {
+                const element = item[key];
+                menuToString += `${key} : ${element}`;
+                menuToString += "\n"
+              }
+            }
+            menuToString += "\n"
+          })
+        }
+        return menuToString
+      }
+      toString() {
+        let menuToString = this.mToString()
+        let result = {
+
+          id: this.id,
+
+          name: this.name,
+
+          menu: menuToString,
+
+
+
+        }
+        return result
+      }
+    }
+    // botao add
+    $('#pedir').click(() => {
+      let produto = new Produto($('#Hamburguer').val(), $('#Bebida').val(), $('#extra').val());
+      pedidoAtual.addProduto(produto)
+
+      initTable(pedidoAtual.menu, '#pedidos')
+    });
+
+    const pedidos = []
+    let pedidoAtual = new Pedido()
+    // botao terminar
+    $('#submeter').click(() => {
+      const today = new Date();
+      let id = today.getTime();
+
+      pedidoAtual.name = $('#inputName').val();
+      pedidoAtual.id = id;
+
+      pedidos.push(pedidoAtual);
+
+      pedidoAtual = new Pedido();
+      let pedidosemstring = productstotable(pedidos);
+      // acrescenta a table no pedidos
+      initTable(pedidosemstring, '#pedidosFeitos')
+      // acrescenta headears (id e nome) no remover pedido do ultimo pedido
+      $('#nomeCliente').html('Nome do Cliente : ' + pedidos[0].name)
+      $('#idCliente').html('Id do Cliente : ' + pedidos[0].id)
+      // acrescenta o pedidos mais velho feito numa tabela
+      initTable(pedidos[0].menu, '#servicocozinha')
+      // reset no form e na tabela no criar pedido
+      clearTable('#pedidos')
+      $('#inputName').val('')
+      $('#Hamburguer').val("N/A"), $('#Bebida').val("N/A"), $('#extra').val("N/A")
+    });
+
+    function productstotable(data) {
+      return data.map(p => {
+
+        return p.toString();
+      })
+    }
+
+    // filtro 3º tab
+    $('#filtrarC').click(() => {
+      let filtExtra = pedidos.filter((element) => {
+        return element.menu.some(p => p.Extra != "N/A")
+
+      });
+      clearTable('#pedidosFeitos');
+      let datatotable = productstotable(filtExtra);
+      initTable(datatotable, '#pedidosFeitos');
+    })
+
+    $('#filtrarS').click(() => {
+      let filtExtra = pedidos.filter((element) => {
+        return element.menu.some(p => p.Extra === "N/A")
+
+      });
+      clearTable('#pedidosFeitos');
+      let datatotable = productstotable(filtExtra);
+      initTable(datatotable, '#pedidosFeitos');
+    })
+
+    $('#todos').click(() => {
+      let filtExtra = pedidos.filter((element) => {
+        return element.menu.some(p => p.Extra)
+
+      });
+      clearTable('#pedidosFeitos');
+      let datatotable = productstotable(filtExtra);
+      initTable(datatotable, '#pedidosFeitos');
+    })
+// remove o pedido mais antigo
+    $('#rAntigo').click(() => {
+      pedidos.splice(0, 1)
+      clearTable('#servicocozinha')
+
+      $('#nomeCliente').html('Nome do Cliente : ' + pedidos[0].name)
+      $('#idCliente').html('Id do Cliente : ' + pedidos[0].id)
+
+      initTable(pedidos[0].menu, '#servicocozinha')
+    })
+
+  </script>
+
+</body>
+
+
+</html>

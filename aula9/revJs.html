@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Hello, world!</h1>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script>
+    let changeType = '';
+    const sameValue = 3;
+    // sameValue = 4;
+    const user = {
+      name: 'Joao',
+      age: 39
+    }
+    user.address = 'Rua de Cima'
+    // user = {}
+
+    let number = 5
+    // plusOne(number)
+
+    function plusOne(value) {
+      let plusOneVar = value + 1;
+      console.log(value, plusOneVar);
+
+      return plusOneVar
+    }
+
+    function plusN(value, counter) {
+      for (let count = 0; count < counter; count++) {
+        value = plusOne(value)
+      }
+
+      return value;
+    }
+
+    let result = plusN(5, 4)
+
+
+    let arr = [1, 2, 14, 1, 300]
+    let users = [{
+      firstName: 'Joao',
+      lastName: 'Cortes',
+      age: 39,
+      note: undefined
+    }]
+
+    let longTasks = true;
+    for (let index = 0; index < arr.length; index++) {
+      const element = arr[index];
+      if (element <= 8) {
+        longTasks = false
+        console.log(element);
+        longTasks.push(element)
+      }
+    }
+    console.log(longTasks)
+
+    let firstOnArray = arr.find( (daysOn) => element > 8) // 14
+
+    let allOnArray = arr.filter( (daysOn) => element > 8) // [14, 300]
+
+    // for (let index = 0; index < arr.length; index++) {
+    //   const element = arr[index];
+
+    // }
+    // for (const [index, element] of arr.entries()) {
+    //   console.log(index, element);
+    // }
+    // for (const element of arr) {
+    //   console.log(plusN(element, 1))
+    // }
+    // for (const user of users) {
+    //   if (user.firstName === undefined || user.firstName === '') {
+    //     return
+    //   }
+    //   user.fullname = `${user.firstName} ${user.lastName}`;
+    //   delete user.firstName;
+    //   delete user.lastName;
+    //   if (user.age < 18) {
+    //     return
+    //   }
+    //   if(user.notes === undefined) {
+    //     user.notes = 'New Note'
+    //   } else {
+    //     user.note += ' ' + 'Other new note'
+    //   }
+    // }
+
+
+
+
+  </script>
+</body>
+
+</html>

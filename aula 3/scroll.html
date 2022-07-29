@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <style>
+    .nav-spacer {
+        height: 80px;
+    }
+  </style>
+  <body>
+    <nav id="navbar" class="navbar bg-light px-3 fixed-top">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profile form">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profile table">Table</a>
+          </li>
+    
+        </ul>
+      </nav>
+      
+      <div data-bs-spy="scroll" 
+      data-bs-target="#navbar" 
+      data-bs-root-margin="0px 0px -40%" 
+      data-bs-smooth-scroll="true" 
+      class="scrollspy-example" tabindex="0">
+      
+
+        
+        <div id="home" class="vh-100">
+            <div class="nav-spacer"></div>
+            <h4>Home</h4>
+         </div>
+
+         
+         <div id="profile form" class="vh-100">
+            <div class="nav-spacer"></div>
+            <h4>Profile Form</h4>
+         </div>
+
+         
+         <div id="profile table" class="vh-100">
+            <div class="nav-spacer"></div>
+            <h4>Profile Table</h4>
+         </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>

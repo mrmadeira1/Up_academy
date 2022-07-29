@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<style>
+  #headmaster {
+    font-family: 'Sofia', sans-serif;
+    font-size: 30px;
+    border: 5px;
+    color: palevioletred;
+    margin-bottom: 10px;
+  }
+
+  #pills-contact-tab.active {
+    color: white;
+    background-color: dodgerblue;
+  }
+
+  #pills-home-tab.active {
+    color: crimson;
+    background-color: whitesmoke !important;
+  }
+
+  #pills-profile-tab.active {
+    color: white;
+    background-color: tan;
+  }
+
+  body {
+    margin-left: 10px;
+    background-image: url(https://3.bp.blogspot.com/-5kTHLBmLPWo/WoR4M39uuII/AAAAAAAAD_k/ID68Vx4xCaAU-MJO4vgvdyB0UDryiQdCgCLcBGAs/w1200-h630-p-k-no-nu/bg007c.BMP);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+
+  #navbarNav {
+    margin-bottom: 30px;
+  }
+</style>
+
+<body>
+  <!-- tabs -->
+  <div id="headmaster" class="row">
+    <h7 style="background-color: white;"> The (He)art of Books
+      <img src="https://t3.ftcdn.net/jpg/02/98/40/08/360_F_298400887_rwJS1pXLxa9M9FoSB7g0zusEpGxMrSKZ.jpg"
+        style="width: 7%;"></img>
+    </h7>
+  </div>
+
+  <div class="d-flex justify-content-between" id="navbarNav">
+    <div class="row"
+      style="background-color: white; width: auto; padding-right: 5px; border: 2px solid goldenrod; border-radius:15px;">
+      <a class="my-auto navbar-brand d-flex justify-content-start col-6" id="utilizadorNome"
+        style="font-weight:bold">Utilizador: ?</a>
+      <a class="my-auto navbar-brand d-flex justify-content-start col-6" id="utilizadorGenre"
+        style="font-weight:bold">Livros: Sugerido</a>
+    </div>
+    <ul class="nav nav-pills my-auto" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+          type="button" role="tab" aria-controls="pills-contact" aria-selected="true">Login</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
+          role="tab" aria-controls="pills-home" aria-selected="false">Tinder</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+          type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Livros Gostados</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="log-out" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button"
+          role="tab" aria-controls="pills-profile" aria-selected="false"
+          style="background-color: red; color:white">Log-out</button>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <div class="tab-content" id="pills-tabContent">
+    <!-- login page -->
+    <div class="tab-pane fade show active" id="pills-contact" role="tabpanel" aria-labelledby="pills-profile-tab"
+      tabindex="0">
+
+      <div class="mb-3 col-6" style="width:fit-content;">
+        <label for="inputName" class="form-label" style="font-weight:bold;color: floralwhite; ">Utilizador</label>
+        <input type="text" class="form-control" id="inputName" size="50">
+      </div>
+
+      <div class="mb-3" style="width:fit-content;">
+        <label for="inputGenre" class="form-label" style="font-weight:bold;color: floralwhite; ">Tipo de Livro</label>
+        <input type="text" class="form-control" id="inputGenre" size="50">
+      </div>
+      <div class="col-6">
+        <button id="login" type="button" class="btn btn-primary" style="background-color: dodgerblue">Login</button>
+      </div>
+      <div id="welcome" style="color:white ;font-weight:bold;font-size:large"></div>
+    </div>
+    <!-- pagina principal tinder -->
+    <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+      <div id="image" class="d-flex justify-content-center"></div>
+
+      <div>
+        <h2 id="title" class="d-flex justify-content-center" style="color:white;font-weight: bold;"></h2>
+      </div>
+
+      <div id="descricao" class="d-flex justify-content-center"
+        style="color:black;font-weight: bold;background-color: white;"></div>
+
+      <div id="id" class="d-flex justify-content-center" style="color:white;font-weight: bold;"></div>
+
+      <div class=" d-flex justify-content-evenly">
+        <div class="">
+          <button id="nao" type="button" class="btn btn-primary" style="background-color:red">Não Gosto</button>
+        </div>
+        <div class="">
+          <button id="sim" type="button" class="btn btn-primary"
+            style="background-color:rgb(13, 227, 13)">Gosto</button>
+        </div>
+      </div>
+
+      <div id="link" class="d-flex justify-content-center" style="color:white;font-weight: bold;"></div>
+    </div>
+    <!-- ver quais os livros que gostei -->
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+      <table id="livrosgostados" class="table">
+        <thead id="table-head" style="color:white;font-weight:bold;">
+        </thead>
+        <tbody id="table-body" style="background-color: white;">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="../templates/tableLib.js"></script>
+  <script src="./Livro.js"> </script>
+  <script src="./Utilizador.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    let l = []
+    let b = []
+    let c = []
+    let dataTable = []
+    let gosto = []
+    let startIndex = 0
+    let utilizador = []
+    let genre = []
+    let userBooks = []
+    let allUsercomLivros = []
+    let currentUser = {}
+
+
+
+    $('#login').click(() => {
+      let info = new Utilizador($('#inputName').val(), $('#inputGenre').val());
+      utilizador.push(info);
+      $('#utilizadorNome').html('Utilizador: ' + utilizador[0].name)
+      checkGenreinput();
+      chooseGenre();
+      getData();
+      runuserData();
+    });
+
+    function checkGenreinput() {
+      if ($('#inputGenre').val()) {
+        $('#utilizadorGenre').html('Livros: ' + utilizador[0].genre)
+      } else
+        $('#utilizadorGenre').html('Livros: Sugerido')
+    }
+
+    function chooseGenre() {
+      if ($('#inputGenre').val() === "") {
+        genre.push('twilight')
+      } else {
+        genre.splice(0, 1, $('#inputGenre').val());
+      }
+
+    }
+
+    function getData() {
+      $.get(`https://www.googleapis.com/books/v1/volumes?q=${genre}&startIndex=` + startIndex, function (data) {
+        startIndex += 10;
+        b = data.items
+        // console.log(b)
+        b.forEach(el => {
+          livros = new Livro(el.volumeInfo.imageLinks.smallThumbnail, el.volumeInfo.title, el.volumeInfo.description, el.volumeInfo.infoLink, el.id)
+          l.push(livros)
+          // console.log(l)
+          // console.log(livros)
+        });
+        $('#image').append(`<img src="${l[0].image}"></img>`)
+        $('#title').html('Titulo: ' + l[0].title)
+        $('#descricao').append(`<p> Descrição : ${l[0].descricao} </p>`)
+        $('#id').append(`<p> Id : ${l[0].id} </p>`)
+        $('#link').append(`<p> link : ${l[0].links} </p>`)
+      });
+    }
+
+    $('#nao').click(() => {
+      l.splice(0, 1)
+      console.log(l)
+      // apaga o livro antigo
+      clear();
+      // escreve o novo livro
+      getLivros();
+    })
+
+    $('#sim').click(() => {
+      // coloca o livro que aparece na pagina num arreio
+      gosto.push(l[0])
+      // pega nesse arreio e para cada elemento vai busvar o id,titulo e link
+      gosto.forEach(el => {
+        livrossim = {
+          Capa: el.getImage(),
+          Titulo: el.getNome(),
+          Link: el.getLink(),
+        }
+        // colocamos na datatable que é os dados para por na tabela, os livros com o seu titulo id e link
+        dataTable.push(livrossim);
+        userBooks.push(livrossim.Titulo);
+        addBook();
+      });
+      utilizador[0].books = userBooks
+      // limpamos a tabela anterior
+      clearTable('#livrosgostados');
+      // desenhamos a tabela com os livros gostados
+      initTable(dataTable, '#livrosgostados')
+      // limpamos dupes
+      gosto.splice(0, 1)
+      // retiramos livros gostados no arreio inicial
+      l.splice(0, 1)
+      // limpamos livros e suas informacoes da pagina inicial
+      clear();
+      // apresentamos o novo
+      getLivros();
+    })
+
+    function clear() {
+      return $('#image').empty(),
+        $('#title').empty(),
+        $('#descricao').empty(),
+        $('#id').empty(),
+        $('#link').empty();
+    }
+
+    function next() {
+      $('#image').append(`<img src="${l[0].image}"></img>`)
+      $('#title').html('Titulo: ' + l[0].title)
+      $('#descricao').append(`<p> Descrição : ${l[0].descricao} </p>`)
+      $('#id').append(`<p> Id : ${l[0].id} </p>`)
+      $('#link').append(`<p> link : ${l[0].links} </p>`)
+    }
+
+    function getLivros() {
+      if (l.length === 3) {
+        return getData();
+      } else return next();
+    }
+    // função log-out simplesmente da empty no login na tabela e no tinder
+    $('#log-out').click(() => {
+      $('#utilizadorNome').html('Utilizador: ?');
+      $('#utilizadorGenre').html('Livros: Sugerido');
+      clear();
+      clearTable('#livrosgostados');
+      utilizador.splice(0, 1);
+      $('#inputName').val("");
+      $('#inputGenre').val("");
+    })
+
+    // verificar se o input no nome ja existe, se nao existir cria esse utilizador
+    function runuserData() {
+
+      let username = $('#inputName').val();
+
+      $.get('https://upacademytinder.herokuapp.com/api/users/?filter={"where":{"username":"' + username + '"},"include":"books"}')
+        .done((data) => {
+          (data.length == 0) ? addUser(username) : setUserExistente(data[0]);
+        }).fail((err) => {
+          console.error("Erro : ", err);
+        });
+    };
+
+    // adiciona um novo user e da set no user novo e retorn a sua data na console
+    function addUser() {
+      let tempUser = {
+        username: $('#inputName').val(),
+      }
+      $.post('https://upacademytinder.herokuapp.com/api/users', tempUser).done((data) => {
+        console.log('utilizador novo')
+        console.log(data)
+        setUserNovo(data);
+      }).fail((err) => {
+        console.error("Erro : ", err);
+      });
+    }
+
+    // para o tempbook vamos buscar os livros liked e damos post no seu user da capa titulo e link
+    function addBook() {
+      let tempBook = {
+        Capa: livrossim.Capa,
+        Titulo: livrossim.Titulo,
+        Link: livrossim.Link,
+      }
+      console.log(tempBook)
+
+      $.post('https://upacademytinder.herokuapp.com/api/users/' + currentUser.id + '/books',
+        tempBook).done((data) => {
+          console.log(tempBook)
+          console.log('livro add')
+          console.log(data);
+        }).fail((err) => {
+          console.error("Erro : ", err);
+        });
+    }
+    // funcao que da set no user que ja existe e traz os seus dados para a aplicacao
+    function setUserExistente(user) {
+      currentUser = user
+      getApiLikedBooks();
+      console.log(currentUser)
+      $('#welcome').append(`<p>Bem vindo de volta</Ps>`)
+    }
+    // funcao da set ao user novo 
+    function setUserNovo(user) {
+      currentUser = user
+      console.log(currentUser)
+      $('#welcome').append(`<p>Bem vindo pela 1º vez</Ps>`)
+    }
+    // vai buscar os livros que o utilizador existente ja gostou e coloca na tabela na tab dos livros gostados
+    function getApiLikedBooks() {
+      currentUser.books.forEach(el => {
+        livrosApi = {
+          Capa: el.Capa,
+          Titulo: el.Titulo,
+          Link: el.Link,
+        }
+        dataTable.push(livrosApi)
+      });
+      initTable(dataTable, '#livrosgostados')
+    }
+
+    // function getUsers() {
+    //   $.get('https://upacademytinder.herokuapp.com/api/users?filter={"include":"books"}')
+    //     .done(function (data) {
+    //       console.log(data);
+    //       // match(data);
+    //     })
+    //     .fail(function (data) {
+    //       console.error("Erro : ", data);
+    //     });
+    // }
+
+    // function match(data) {
+    //   let allUser = data
+    //   console.log(allUser)
+    //   allUser.forEach(el => {
+
+    //     if (el.id != currentUser.id) {
+    //       console.log('nao é igual')
+    //       console.log(el.books)
+
+    //       el.books.forEach(livro => {
+    //         livro.Titulo = 
+    //       });
+    //     }
+    //   })
+    //   getCurrUserBooksID();
+    // };
+
+    // function getCurrUserBooksID() {
+    //   let currUserBookTitle = []
+    //   currentUser.books.forEach(el => {
+    //     curruserTitle = el.Titulo,
+    //       currUserBookTitle.push(curruserTitle);
+    //   }); console.log(currUserBookTitle);
+    // }
+
+  </script>
+</body>
+
+</html>

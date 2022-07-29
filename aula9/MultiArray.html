@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+  <p id="order"></p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script>
+    /*******************************************************************************
+     *  Desafio: Apresentar os valores ordenados de forma crescente no elemento <p> 
+     ******************************************************************************/
+    let data = [1, "2", [20, [4, "12", [6, "l4"], 3], ["5", "9"], 10], 8, 7];
+    let data2 = [1, "2", [200, [4, "120", [6, "l4"], 3], ["5", "9"], 10], 8, 7];
+
+    function Order(currarray) {
+      let result = []
+      let arr1 = currarray.flat(Infinity)
+      // let arr2 = arr1.flatMap(Number)
+      arr1.forEach(element => {
+        if (typeof element == "number" && !isNaN(element)) {
+          result.push(parseInt(element))
+        } else if (typeof element == "string" && !isNaN(element)) {
+          result.push(parseInt(element))
+        }
+      });
+      result.sort(function (a, b) { return a - b }); //resul.sort(a,b => a - b)
+      $(`#order`).html(result.toString());
+      return result
+    }
+
+
+  </script>
+</body>
+
+</html>

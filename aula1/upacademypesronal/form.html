@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+ <body class="container"> 
+  <style>
+  h1 {
+    color: blueviolet;
+  }
+#Male {
+  background-color: cyan;
+}
+#Female {
+  background-color: pink;
+}
+  </style>
+  <div class="d-flex justify-content-center mb-3">
+  <h1> Profile</h1>
+  </div>
+  <form>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" class="form-control" id="name">
+    </div>
+    
+    <label for="age" class="form-label">Age:</label>
+    <input type="number" class="form-control" id="age" name="age"><br><br>
+    <label for="password" class="form-label">Password:</label>
+    
+    <input type="password" class="form-control" id="password" name="password"><br><br>
+    <div class="d-flex justify-content-around ms-0 me-0">
+    <label for="gender1" class="form-label">Gender:</label>
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="Male">
+        <label class="form-check-label" for="Male">
+          Male
+        </label>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="Female" checked>
+        <label class="form-check-label" for="Female">
+          Female
+        </label>
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="Other" checked>
+        <label class="form-check-label" for="Other">
+          Other
+        </label><br><br>
+</div>
+   
+<label for="football" class="form-label">Footbal Club:</label>
+    <input type="text" class="form-control" id="football club" name="footbal club"><br><br>
+    
+    <label for="height" class="form-label">Height(cm):</label>
+    <input type="number" class="form-control" id="height" name="height"><br><br>  
+    
+    <label for="weight" class="form-label">Weight(Kg):</label>
+    <input type="number" class="form-control" id="weight" name="weight"><br><br>  
+        
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          I accept the terms and conditions.
+    </label><br><br>
+    
+    <label for="favcolor" class="form-label">Select your favorite color:</label>
+    <input type="color" class="form-control" id="favcolor" name="favcolor" value="#ff0000"><br><br>
+        <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+  
+  <p>Click the "Submit" button and the form-data will be sent to a page on the 
+  server called "action_page.php".</p>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+  </html>
+  

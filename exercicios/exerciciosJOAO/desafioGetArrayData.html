@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h1>Id by Name</h1>
+  <h4 id="selectedIdbyName"></h4>
+
+  <h1>All by Name</h1>
+  <table id="selectedbyName" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <h1>All by Id</h1>
+  <table id="selectedbyId" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <h1>Average by Name</h1>
+  <h4 id="selectedAverageAge"></h4>
+
+  <h1>Average Age</h1>
+  <h4 id="animalsAverageAge"></h4>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="../Libs/tableLib.js"></script>
+  <script>
+    let animals = [
+      {
+        name: "Zé Manel",
+        id: 1,
+        idade: 2,
+        familia: "Cão"
+      }, {
+        name: "Zé Carlos",
+        id: 2,
+        idade: 3,
+        familia: "Gato"
+      }, {
+        name: "Sam",
+        id: 3,
+        idade: 11,
+        familia: "Cão"
+      }, {
+        name: "Gata",
+        id: 4,
+        idade: 11,
+        familia: "Gato"
+      }, {
+        name: "Hulk",
+        id: 5,
+        idade: 14,
+        familia: "Cão"
+      }, {
+        name: "Migas",
+        id: 6,
+        idade: 14,
+        familia: "Gato"
+      }]
+
+    let animalsNames = [
+      "Zé Carlos",
+      "Zé Manel",
+      "Hulk"
+    ]
+    let animalsIds = [
+      2,
+      4,
+      6
+    ]
+  </script>
+  <script>
+    // function getDataFromArray(selectedArray, findArray, findKey, returnKey) {
+    //   const result = [];
+    //   for (let index = 0; index < selectedArray.length; index++) {
+    //     const selectItem = selectedArray[index];
+    //     for (let allDataIndex = 0; allDataIndex < findArray.length; allDataIndex++) {
+    //       const dataItem = findArray[allDataIndex];
+    //       if (selectItem === dataItem[findKey]) {
+    //         console.log(returnKey, !!returnKey);
+    //         if (!!returnKey) { // returnKey !== undefined && returnKey !== null
+    //           result.push(dataItem[returnKey]);
+    //         } else {
+    //           result.push(dataItem);
+    //         }
+    //       }
+    //     }
+    //   }
+    //   return result;
+    // }
+
+    // function getDataFromArray(selectedArray, findArray, findKey, returnKey) {
+    //   return selectedArray.map((selected) => {
+    //     let result = findArray.find((currAnimal) => currAnimal[findKey] === selected);
+    //     if (!!result) {
+    //       return (returnKey) ? result[returnKey] : result;
+    //     }
+    //   }).filter((element) => !!element);
+    // }
+
+    // function getDataFromArray(selectedArray, findArray, findKey, returnKey) {
+    //   const result = [];
+    //   selectedArray.map((selected) => {
+    //     let findResults = findArray.filter((currAnimal) => currAnimal[findKey] === selected);
+    //     findResults.forEach((findResult) => {
+    //       result.push((!!returnKey) ? findResult[returnKey] : findResult);
+    //     });
+    //   });
+    //   return result;
+    // }
+
+
+    // Função mestre que é chamada para resolver cada desafio, chama 4 parametros
+    // -selectedArray:vai buscar o array mais pequeno/ findarray:vai buscar o array maior onde queremos procurar os
+    // elementos do array pequeno/findKey: serve para especificarmos onde queremos procurar no array maior
+    // returnKey: retorna o objeto da key que queremos
+    function getDataFromArray(selectedArray, findArray, findKey, returnKey) {
+      // criamos o array result para fazer push la dentro, criamos fora para que seja renovado a cada step
+      const result = [];
+      selectedArray.forEach((selected) => {
+        // selected = "Zé Carlos"
+        let findResult = findArray.find((currAnimal) => currAnimal[findKey] === selected);
+        // [findkey] serve para encontrar o atributo que queremos ex: .id/.name
+        // para cada elemento selecionado no selectedArray ele vai ler o seu elemento
+        // esse elemento vai ser encontrado usado o .find no findArray
+        // em seguida usamos a arrow function para comparar se a findkey do currAnimal no array que fomos procurar é igual ao nosso selected
+        if (!!findResult) {
+          // caso findresult seja truthy, ou seja caso nao seja null/undefined/nan ou vazio entao vamos dar push
+          // vamos dar push da returnKey do find result caso exista uma return key caso contrario damos push apenas do findResult
+          result.push((returnKey) ? findResult[returnKey] : findResult);
+        }
+
+        // let result = '';
+        // if (returnKey) {
+        //   result = findResult[returnKey]
+        // } else {
+        //   result = findResult
+        // }
+      });
+      return result;
+    }
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os ids dos animais do array animalsNames
+     ******************************************************************************/
+    let selectedIdbyName = getDataFromArray(animalsNames, animals, "name", "id");
+    $(`#selectedIdbyName`).html(selectedIdbyName.toString());
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os animais do array animalsNames
+     ******************************************************************************/
+    let selectedbyName = getDataFromArray(animalsNames, animals, "name");
+    initTable(selectedbyName, '#selectedbyName')
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os animais do array animalsIds
+     ******************************************************************************/
+    let selectedbyId = getDataFromArray(animalsIds, animals, "id");
+    initTable(selectedbyId, '#selectedbyId')
+
+    /*******************************************************************************
+     *       Desafio: Apresentar a media de idade dos animais do array animalsNames
+     ******************************************************************************/
+    let selectedAverageAge = getDataFromArray(animalsNames, animals, "name", "idade");
+    // metodo reduce permite acumular o array num unico valor, neste caso vamos acumular as idades dos animais.
+    selectedAverageAge = selectedAverageAge.reduce((total, currIdade) => total + currIdade) / selectedAverageAge.length;
+    $(`#selectedAverageAge`).html(selectedAverageAge);
+
+    /*******************************************************************************
+     *       Desafio: Apresentar a media de idade de todos os animais
+     ******************************************************************************/
+    let animalsAverageAge = animals.reduce((total, currAnimal) => total + currAnimal.idade, 0) / animals.length;
+    // usamos o reduce diretamente no array animals no qual varremos o array na idade(.idade) desde o index 0
+    $(`#animalsAverageAge`).html(animalsAverageAge);
+
+
+  </script>
+</body>
+
+</html>

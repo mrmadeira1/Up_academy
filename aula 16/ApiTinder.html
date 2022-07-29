@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Api Tinder</title>
+</head>
+
+<body>
+    <div class="container bg-primary">
+        <button onclick="getUsers()">Get Users</button>
+    </div>
+    <div class="container bg-secondary">
+        <input type="text" id="userId">
+        <button onclick="getUserById()">Get Users by Id</button>
+        <button onclick="getUserByUsername()">Get Users by Username</button>
+        <button onclick="deleteUserById()">Delete Users by Id</button>
+    </div>
+    <div class="container bg-primary">
+        <input type="text" id="currentUsername">
+        <button onclick="updateUser()">Update User</button>
+    </div>
+    <div class="container bg-secondary">
+        <input type="text" id="username">
+        <button onclick="addUser()">Add User</button>
+    </div>
+    <div class="container bg-primary">
+        <input type="text" id="bookName">
+        <button onclick="addBook()">Add Book</button>
+    </div>
+    <div class="container bg-primary">
+        <input type="text" id="bookAttr">
+        <button onclick="getUsersByBookAttr()">Get Users By Book Attribute</button>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+
+        // https://upacademytinder.herokuapp.com/explorer/#/
+
+
+        currentId = 0;
+        currentUser = {};
+
+        function getUsers() {
+            $.get('https://upacademytinder.herokuapp.com/api/users?filter={"include":"books"}')
+                .done(function(data) {
+                    console.log(data);
+                    
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+
+        function getUserById() {
+            let id = $("#userId").val();
+            $.get('https://upacademytinder.herokuapp.com/api/users/' + id + '?filter={"include":"books"}')
+                .done(function(data) {
+                    console.log(data);
+                    currentUser = data;
+                    currentId = data.id;
+                    $("#currentUsername").val(data.username);
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+
+        function getUserByUsername() {
+            let username = $("#userId").val();
+            $.get('https://upacademytinder.herokuapp.com/api/users/findOne?filter={"where":{"username":"' + username + '"},"include":"books"}')
+                .done(function(data) {
+                    console.log(data);
+                    currentUser = data;
+                    currentId = data.id;
+                    $("#currentUsername").val(data.username);
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+
+        function getUsersByBookAttr() {
+            let bookAttr = $("#bookAttr").val();
+            let query = {
+                where: {
+                    title: "" + bookAttr
+                },
+                include: {
+                    relation: "user",
+                    scope: {
+                        fields: ["username"]
+                    }
+                },
+                fields: ["userId", "title", "id"]
+            }
+            $.get('https://upacademytinder.herokuapp.com/api/Books?filter=' + JSON.stringify(query))
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+
+        function deleteUserById() {
+            let id = $("#userId").val();
+            $.ajax({
+                url: 'https://upacademytinder.herokuapp.com/api/users/' + id,
+                type: 'DELETE',
+                success: function(result) {
+                    console.log("Deleted");
+                },
+                error: function(result) {
+                    console.log("Deleted Error : ", result);
+                }
+            });
+        }
+
+        function updateUser() {
+            currentUser.username = $("#currentUsername").val();
+            $.ajax({
+                url: 'https://upacademytinder.herokuapp.com/api/users/' + currentUser.id,
+                type: 'PUT',
+                data: currentUser,
+                success: function(result) {
+                    console.log("Updated");
+                }
+            });
+        }
+
+        function addUser() {
+            tempUser = {
+                username: $("#username").val()
+            }
+            $.post('https://upacademytinder.herokuapp.com/api/users', tempUser)
+                .done(function(data) {
+                    console.log(data);
+                    currentId = data.id;
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+
+        function addBook() {
+            let tempBook = {
+                name: $("#bookName").val()
+            }
+            $.post('https://upacademytinder.herokuapp.com/api/users/' + currentId + '/books', tempBook)
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function(data) {
+                    console.error("Erro : ", data);
+                });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="container">
+  <h1>Id by familia gato</h1>
+  <h4 id="selectedIdbygato"></h4>
+
+  <h1>Id by familia cao</h1>
+  <table id="selectedbyfamily" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <h1>Id by Name</h1>
+  <h4 id="selectedIdbyName"></h4>
+
+  <h1>All by Name</h1>
+  <table id="selectedbyName" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <h1>All by Id</h1>
+  <table id="selectedbyId" class="table">
+    <thead id="table-head"></thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <h1>Average by Name</h1>
+  <h4 id="selectedAverageAge"></h4>
+
+  <h1>Average Age</h1>
+  <h4 id="animalsAverageAge"></h4>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="../templates/tableLib.js"></script>
+  <script>
+    let animals = [
+      {
+        name: "Zé Manel",
+        id: 1,
+        idade: 2,
+        familia: "Cão"
+      }, {
+        name: "Zé Carlos",
+        id: 2,
+        idade: 3,
+        familia: "Gato"
+      }, {
+        name: "Sam",
+        id: 3,
+        idade: 11,
+        familia: "Cão"
+      }, {
+        name: "Gata",
+        id: 4,
+        idade: 11,
+        familia: "Gato"
+      }, {
+        name: "Hulk",
+        id: 5,
+        idade: 14,
+        familia: "Cão"
+      }, {
+        name: "Migas",
+        id: 6,
+        idade: 14,
+        familia: "Gato"
+      }]
+
+    let animalsNames = [
+      "Zé Carlos",
+      "Zé Manel",
+      "Hulk"
+    ]
+    let animalsIds = [
+      2,
+      4,
+      6
+    ]
+  </script>
+  <script>
+    // function resolve(varArray, attribute, returnAttribute) {
+    //   const result = [];
+    //   varArray.forEach(animalName => {
+    //     animals.forEach(animal => {
+    //       if (animal[attribute] === animalName) {
+    //         if (returnAttribute) {
+    //           result.push(animal[returnAttribute]);
+    //         } else {
+    //           result.push(animal);
+    //         }
+    //       }
+    //     })
+    //   });
+    //   return result
+    // }
+    /*******************************************************************************
+     *       Desafio: Apresentar os ids dos animais pela familia Gato
+     ******************************************************************************/
+    // let selectedIdbyFamily = resolve()
+
+    // function resolve() {
+    //   const result = [];
+    //   animals.forEach(element => {
+    //     if (element.familia === "Gato") {
+    //       result.push(element.id)
+    //     }
+    //   });
+    //   return result
+    // }
+    // $(`#selectedIdbygato`).html(selectedIdbyFamily.toString());
+    /*******************************************************************************
+    *       Desafio: Apresentar os animais pela familia Cão
+    ******************************************************************************/
+    // let selectedbyFamily = resolve2()
+
+    // function resolve2() {
+    //   const result2 = [];
+    //   animals.forEach(element => {
+    //     if (element.familia === "Cão") {
+    //       result2.push(element)
+    //     }
+    //   });
+    //   return result2
+    // }
+    //   initTable(selectedbyFamily, '#selectedbyfamily')
+    /*******************************************************************************
+   *       Desafio: juncao duas anteriores 
+   ******************************************************************************/
+    let selectedbyrace = resolve3()
+
+
+    function resolve3() {
+      const resultgato = [];
+      const resultcao = [];
+      animals.forEach(element => {
+        if (element.familia === "Gato") {
+          resultgato.push(element.id)
+        } else {
+          resultcao.push(element)
+        }
+      })
+      $(`#selectedIdbygato`).html(resultgato.toString());
+      initTable(resultcao, '#selectedbyfamily')
+      return [resultcao, resultgato]
+      
+    };
+
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os ids dos animais do array animalsNames
+     ******************************************************************************/
+    // let selectedIdbyName = resolve(animalsNames, 'name', 'id');
+    // $(`#selectedIdbyName`).html(selectedIdbyName.toString());
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os animais do array animalsNames
+     ******************************************************************************/
+    // let selectedbyName = resolve(animalsNames, 'name');
+    // initTable(selectedbyName, '#selectedbyName')
+
+    /*******************************************************************************
+     *       Desafio: Apresentar os animais do array animalsIds
+     ******************************************************************************/
+    // let selectedbyId = resolve(animalsIds, 'id');
+    // initTable(selectedbyId, '#selectedbyId')
+
+    /*******************************************************************************
+     *       Desafio: Apresentar a media de idade dos animais do array animalsNames
+     ******************************************************************************/
+    // let selectedAverageAge = resolve(animalsNames, "name", "idade");
+    // selectedAverageAge = selectedAverageAge.reduce((total, idade) => total + idade) / selectedAverageAge.length;
+    // $(`#selectedAverageAge`).html(selectedAverageAge);
+
+    /*******************************************************************************
+     *       Desafio: Apresentar a media de idade de todos os animais
+     ******************************************************************************/
+    // let animalsAverageAge = animals
+    //   .reduce((total, currAnimal) => total + currAnimal.idade, 0) / animals.length;
+    // $(`#animalsAverageAge`).html(animalsAverageAge);
+
+
+  </script>
+</body>
+
+</html>
